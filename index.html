@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            body {
+                padding: 3rem;
+            }
+
+            * {
+                background: #000;
+                color: rgb(226, 146, 27);
+                font-family: 'Fira Code', monospace;
+                font-size: 16px;
+                padding: .25rem;
+                margin: 0;
+                margin-bottom: 5px;
+                padding: 0;
+            }
+
+            p,
+            input {
+                padding-left: 2rem;
+            }
+
+            input {
+                width: 90%;
+                border: 0;
+            }
+
+            input:focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <p>_Welcome to the machine</p>
+        <div class="cmd"><input type="text" name="" value=""></div>
+    </body>
+    <script type="text/javascript">
+        const parseCommand = (text) => {
+            const newP = document.createElement('p');
+            newP.innerHTML = text;
+            document.body.insertBefore(newP, cmd);
+        }
+
+        const handleKey = (event) => {
+            if (event.key === 'Enter') {
+                parseCommand(event.target.value);
+                event.target.value = '';
+            }
+        }
+
+        const cmd = document.querySelector('.cmd');
+        const cmdInput = cmd.querySelector('input');
+        cmdInput.addEventListener('keypress', handleKey);
+        document.addEventListener('DOMContentLoaded', () => {
+            cmdInput.focus();
+        });
+    </script>
+</html>
